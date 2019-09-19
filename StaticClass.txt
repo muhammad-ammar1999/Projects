@@ -1,0 +1,36 @@
+using System;
+
+namespace ConsoleApplicationTask
+{
+    class force
+    {
+        static float g;
+        int Mass;
+        static force()
+        {
+            force.g = 9.8F;
+
+        }
+        public force(int UserMass)
+        {
+            this.Mass = UserMass;
+        }
+        public float GravitationalForce()
+        {
+            return this.Mass * force.g;
+        }
+    }
+
+        
+        class Program
+        {
+            public static void Main()
+            {
+                force F1 = new force(9);
+                float weight= F1.GravitationalForce();
+                Console.WriteLine(weight);
+            }
+
+        }
+    }
+
