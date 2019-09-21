@@ -1,0 +1,70 @@
+using System;
+
+namespace ConsoleApplicationTask
+{ 
+ class employee
+    {
+        static float gravity;
+       static int counter;
+      private employee(int id)
+        {
+            employee.gravity = 9.8F;
+            employee.counter= id;
+
+        }
+     public static float getgravity()
+        {
+
+            if (counter == 0)
+            {
+                employee E1 = new employee(0);
+                Console.WriteLine(employee.gravity + " " + counter);
+                counter++;
+                return employee.gravity;
+            }
+            else if (counter == 1)
+            {
+                employee E2 = new employee(1);
+                Console.WriteLine(employee.gravity + " " + counter);
+                counter++;
+                return employee.gravity;
+            }
+            else if (counter == 2)
+            {
+                employee E3 = new employee(2);
+                Console.WriteLine(employee.gravity + " " + counter);
+                counter++;
+                return employee.gravity;
+            }
+            else
+            {
+                employee E4 = new employee(3);
+                Console.WriteLine(employee.gravity + " " + counter);
+                counter = 0;
+                return employee.gravity;
+            }
+
+             
+            
+           
+        }
+
+    }
+        class Program
+        {
+            public static void Main()
+            {
+                employee.getgravity();
+                employee.getgravity();
+                employee.getgravity();
+                employee.getgravity();
+                employee.getgravity();
+                employee.getgravity();
+                employee.getgravity();
+                employee.getgravity();
+                employee.getgravity();
+            }
+
+        }
+    }
+
