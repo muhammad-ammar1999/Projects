@@ -1,0 +1,104 @@
+using System;
+
+namespace ConsoleApplicationTask
+{
+    class Employee
+    {
+        static Employee e1 = null;
+        static Employee e2 = null;
+        static Employee e3 = null;
+        static Employee e4 = null;
+        static float Salary = 1000F;
+        static int counter;
+        static int number = 0;
+        private Employee(int id)
+        {
+
+            Employee.counter = id;
+            number++;
+        }
+        public static Employee getsalary()
+        {
+
+            if (counter == 0 &&  e1 == null)
+            {
+                Employee E1 = new Employee(0);
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter++;
+                return e1;
+            }
+            else if (counter == 0 && e1 != null)
+            {
+                
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter++;
+                return e1;
+            }
+
+
+            else if (counter == 1 && e2 == null)
+            {
+                Employee E2 = new Employee(1);
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter++;
+                return e2;
+            }
+            else if (counter == 0 && e1 != null)
+            {
+
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter++;
+                return e2;
+            }
+
+            else if (counter == 2 && e3 == null)
+            {
+                Employee E3 = new Employee(2);
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter++;
+                return e3;
+            }
+            else if (counter == 2 && e3 != null)
+            {
+
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter++;
+                return e3;
+            }
+            else if (counter == 3 && e4 == null)
+            {
+                Employee E4 = new Employee(3);
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter=0;
+                return e4;
+            }
+            else 
+            {
+
+                Console.WriteLine(Employee.Salary + " " + counter + " " + number);
+                counter=0;
+                return e4;
+            }
+
+
+
+
+        }
+
+    }
+    class Program
+    {
+        public static void Main()
+        {
+
+            Employee.getsalary();
+            Employee.getsalary();
+            Employee.getsalary();
+            Employee.getsalary();
+            Employee.getsalary();
+
+        }
+
+    }
+}
+

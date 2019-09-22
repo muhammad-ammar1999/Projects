@@ -1,45 +1,47 @@
 using System;
 
 namespace ConsoleApplicationTask
-{ 
- class employee
+{
+    class Employee
     {
-        static float gravity;
-       static int counter;
-      private employee(int id)
+        static Employee e1 = null;
+        static float salary = 1000F;
+        static int counter;
+        static int number = 0;
+        private Employee(int id)
         {
-            employee.gravity = 9.8F;
-            employee.counter= id;
-
+            Employee.counter = id;
+            number++;
         }
-     public static float getgravity()
+        public static Employee getsalary()
         {
-            if (employee.counter == 0)
+            if (Employee.counter == 0 && e1 == null)
             {
-                employee E1 = new employee(0);
-                Console.WriteLine(employee.gravity + " " + counter);
+                Employee E1 = new Employee(0);
+                Console.WriteLine(Employee.salary + " " + counter + " " + number);
                 counter++;
-                return employee.gravity;
+                return e1;
             }
             else
             {
-                Console.WriteLine(employee.gravity + " " + counter);
-                return employee.gravity;
+                Console.WriteLine(Employee.salary + " " + counter + " " + number);
+                return e1;
             }
-        }
 
-    }
+
+        }
         class Program
         {
             public static void Main()
             {
-                employee.getgravity();
-                employee.getgravity();
-                employee.getgravity();
-                employee.getgravity();
+                Employee.getsalary();
+                Employee.getsalary();
+                Employee.getsalary();
+                Employee.getsalary();
 
             }
 
         }
     }
+}
 
