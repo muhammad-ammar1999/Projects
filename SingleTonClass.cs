@@ -10,14 +10,14 @@ namespace ConsoleApplicationTask
         static int number = 0;
         private Employee(int id)
         {
-            Employee.counter = id;
+            counter = id;
             number++;
         }
         public static Employee getsalary()
         {
-            if (Employee.counter == 0 && e1 == null)
+            if (counter == 0 && e1 == null)
             {
-                Employee E1 = new Employee(0);
+                e1 = new Employee(0);
                 Console.WriteLine(Employee.salary + " " + counter + " " + number);
                 counter++;
                 return e1;

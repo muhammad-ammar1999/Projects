@@ -20,16 +20,16 @@ namespace ConsoleApplicationTask
         public static Employee getsalary()
         {
 
-            if (counter == 0 &&  e1 == null)
+            if (counter == 0 && e1 == null)
             {
-                Employee E1 = new Employee(0);
+                 e1 = new Employee(0);
                 Console.WriteLine(Employee.Salary + " " + counter + " " + number);
                 counter++;
                 return e1;
             }
             else if (counter == 0 && e1 != null)
             {
-                
+
                 Console.WriteLine(Employee.Salary + " " + counter + " " + number);
                 counter++;
                 return e1;
@@ -38,7 +38,7 @@ namespace ConsoleApplicationTask
 
             else if (counter == 1 && e2 == null)
             {
-                Employee E2 = new Employee(1);
+                e2 = new Employee(1);
                 Console.WriteLine(Employee.Salary + " " + counter + " " + number);
                 counter++;
                 return e2;
@@ -53,7 +53,7 @@ namespace ConsoleApplicationTask
 
             else if (counter == 2 && e3 == null)
             {
-                Employee E3 = new Employee(2);
+               e3 = new Employee(2);
                 Console.WriteLine(Employee.Salary + " " + counter + " " + number);
                 counter++;
                 return e3;
@@ -67,16 +67,16 @@ namespace ConsoleApplicationTask
             }
             else if (counter == 3 && e4 == null)
             {
-                Employee E4 = new Employee(3);
+              e4 = new Employee(3);
                 Console.WriteLine(Employee.Salary + " " + counter + " " + number);
-                counter=0;
+                counter = 0;
                 return e4;
             }
-            else 
+            else
             {
 
                 Console.WriteLine(Employee.Salary + " " + counter + " " + number);
-                counter=0;
+                counter = 0;
                 return e4;
             }
 
@@ -90,6 +90,12 @@ namespace ConsoleApplicationTask
     {
         public static void Main()
         {
+
+            Employee.getsalary();
+            Employee.getsalary();
+            Employee.getsalary();
+            Employee.getsalary();
+            Employee.getsalary();
 
             Employee.getsalary();
             Employee.getsalary();
