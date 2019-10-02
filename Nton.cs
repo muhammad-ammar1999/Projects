@@ -4,44 +4,44 @@ namespace ConsoleApplicationTask
 {
     class Employee
     {
-        static int ObjectChecker=10 ;
-        static Employee[] e = new Employee[ObjectChecker];
+        static int ObjectChecker;
+        static Employee[] list = new Employee[ObjectChecker];
         static float Salary = 1000F;
         static int obejctcounter;
-        static int ConstructorCunter;
+        static int ConstructorCounter;
       
         
         private Employee()
         {
-            ConstructorCunter++;
+            ConstructorCounter++;
         }
         public static Employee GetObject(int ObjectChecker)
         {
-            if (obejctcounter < ObjectChecker && e[obejctcounter] != null)
+            if (obejctcounter < ObjectChecker && list[obejctcounter] != null)
             {
                 obejctcounter++;
-                Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
-                return e[obejctcounter];
+                Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCounter);
+                return list[obejctcounter];
 
             }
 
-            else if (e[obejctcounter] == null)
+            else if (list[obejctcounter] == null)
             {
                 while (obejctcounter <= ObjectChecker)
                 {
-                    e[obejctcounter] = new Employee();
+                    list[obejctcounter] = new Employee();
                     obejctcounter++;
                 }
                 obejctcounter = 0;
                     
-                Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
-                return e[obejctcounter];
+                Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCounter);
+                return list[obejctcounter];
             }
             else
             {
                 obejctcounter = 0;
-                Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
-                return e[obejctcounter];
+                Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCounter);
+                return list[obejctcounter];
             }
 
 
@@ -54,6 +54,7 @@ namespace ConsoleApplicationTask
                 Console.WriteLine("how many object you want to create");
            int    Number = int.Parse(Console.ReadLine());
                 Number = Number - 1;
+                ObjectChecker = Number;
                 Employee.GetObject(Number);
                 Employee.GetObject(Number);
                 Employee.GetObject(Number);
