@@ -40,7 +40,7 @@ namespace ConsoleApplicationTask
 
                 do
                 {
-                    if (value < CurrentNode.value)
+                    if (CurrentNode.value > value)
                     {
                         if (CurrentNode.left == null)
                         {
@@ -52,7 +52,7 @@ namespace ConsoleApplicationTask
                             CurrentNode = CurrentNode.left;
                     }
 
-                    if (value >= CurrentNode.value)
+                    if (CurrentNode.value <= value)
                     {
                         if (CurrentNode.right == null)
                         {
@@ -92,7 +92,7 @@ namespace ConsoleApplicationTask
                             CurrentNode = CurrentNode.left;
                     }
 
-                    if (CurrentNode.value < value)
+                    if (CurrentNode.value <= value)
                     {
                         if (CurrentNode.right.value == value)
                         {
@@ -113,6 +113,7 @@ namespace ConsoleApplicationTask
                 if (N.left != null)
                 {
                     print(N.left, ref s);
+
                     s = s + N.value.ToString().PadLeft(3);
                 }
                 else
@@ -146,7 +147,7 @@ namespace ConsoleApplicationTask
 
                     tree.Search(412);
                     tree.Search(7);
-
+                    tree.Search(152);
                 }
             }
         }
