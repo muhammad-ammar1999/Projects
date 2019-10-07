@@ -65,6 +65,29 @@ namespace ConsoleApplicationTask
                     }
                 } while (!added);
             }
+            public void AddRc(int value)
+            {
+                AddR(ref rootnode, value);
+            }
+            private void AddR(ref node N, int value)
+            {
+                if (N == null)
+                {
+                    N = new node(value);
+                    return;
+                }
+                if (N.value > value)
+                {
+                    AddR(ref N.left, value);
+                    return;
+                }
+
+                if (N.value <= value)
+                {
+                    AddR(ref N.right, value);
+                    return;
+                }
+            }
             public void Search(int value)
             {
                 if (rootnode.value == value)
@@ -128,20 +151,20 @@ namespace ConsoleApplicationTask
                 {
                     string input = "";
                     BST tree = new BST();
-                    tree.add(7);
-                    tree.add(6);
-                    tree.add(4);
-                    tree.add(1);
-                    tree.add(9);
-                    tree.add(15);
-                    tree.add(17);
-                    tree.add(8);
-                    tree.add(12);
-                    tree.add(412);
-                    tree.add(1111);
-                    tree.add(989);
-                    tree.add(152);
-                    tree.add(171);
+                    tree.AddRc(7);
+                    tree.AddRc(6);
+                    tree.AddRc(4);
+                    tree.AddRc(1);
+                    tree.AddRc(9);
+                    tree.AddRc(15);
+                    tree.AddRc(17);
+                    tree.AddRc(8);
+                    tree.AddRc(12);
+                    tree.AddRc(412);
+                    tree.AddRc(1111);
+                    tree.AddRc(989);
+                    tree.AddRc(152);
+                    tree.AddRc(171);
 
                     tree.print(null, ref input);
 
