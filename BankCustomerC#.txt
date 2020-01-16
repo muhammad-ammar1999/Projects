@@ -1,0 +1,53 @@
+using System;
+
+namespace ConsoleApplicationTask
+{
+    class program
+    {
+        public class BankCustomer
+        {
+            String _Name;
+            String _BankAccountNumber;
+            private int _Balance;
+            public BankCustomer(String Name, String BankAccountNumber, int Balance)
+            {
+                _Name = Name;
+                _BankAccountNumber = BankAccountNumber;
+                _Balance = Balance;
+                Console.WriteLine(_Name +" "+ _BankAccountNumber + " "+ _Balance);
+            }
+            //public void BankCustomerDetail(String Name,String BankAccountNumber,int Balance)
+            //{
+            //    _Name= Name;
+            //    _BankAccountNumber=BankAccountNumber;
+            //    _Balance=Balance;
+            //  System.out.println(_Name + _BankAccountNumber + _Balance );
+
+
+            //}
+            public void Deposit(int Amount)
+            {
+                _Balance += Amount;
+                Console.WriteLine(_Balance);
+            }
+            public void WithDraw(int Amount)
+            {
+                _Balance -= Amount;
+                Console.WriteLine(_Balance);
+            }
+
+        }
+
+        public static void Main()
+        {
+            //      Scanner sc = new Scanner ( System.in ) ;
+            BankCustomer B1;
+            B1 = new BankCustomer("Ammar", "ABC123", 10000);
+            //  B1.BankCustomerDetail("Ammar","ABC123" , 10000);
+            B1.Deposit(110000);
+            B1.WithDraw(1000);
+        }
+
+    }
+
+}    
