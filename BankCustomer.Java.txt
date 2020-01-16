@@ -1,0 +1,50 @@
+
+package javaapplication1;
+//import java.util.*;
+
+
+public class JavaApplication1 {
+
+public  class BankCustomer{ 
+    String _Name;
+    String _BankAccountNumber;
+   private int  _Balance;
+//    public BankCustomer(String Name,String BankAccountNumber,int Balance)
+//    {
+//       _Name= Name;
+//     _BankAccountNumber=BankAccountNumber;
+//      _Balance=Balance;
+//}
+    public void BankCustomerDetail(String Name,String BankAccountNumber,int Balance)
+    {
+        _Name= Name;
+        _BankAccountNumber=BankAccountNumber;
+        _Balance=Balance;
+      System.out.println(_Name + _BankAccountNumber + _Balance );
+             
+              
+    }
+    public void Deposit(int Amount)
+    {
+        _Balance += Amount;
+      System.out.println(_Balance );         
+    } 
+    public void WithDraw(int Amount)
+    {
+        _Balance -= Amount;
+      System.out.println(_Balance );         
+    } 
+     
+}
+
+ public static void main(String[] args) 
+ {
+ //      Scanner sc = new Scanner ( System.in ) ;
+   BankCustomer B1;
+   B1=new BankCustomer("Ammar","ABC123" , 10000);
+     B1.BankCustomerDetail("Ammar","ABC123" , 10000);
+     B1.Deposit(110000);
+     B1.WithDraw(1000);
+ }
+    
+}
