@@ -20,40 +20,61 @@ public class JavaApplicationTask {
     {
       
      Scanner sc = new Scanner(System.in);
-     double UserInput = sc.nextDouble();
-     double UserTax = TaxSlab(UserInput); 
-     System.out.println(UserTax);
-     
+     System.out.println("UserInput");
+             int UserIncome =sc.nextInt();
+     int TaxReturn = TaxSlab(  UserIncome);
+System.out.println(TaxReturn);
      
     }
-    public static double TaxSlab(double UserInput)
-    {double Tax=0,UserTax=0;
-       if( UserInput<=250000)
-           return  UserInput;
-       else if ( UserInput>250000 && UserInput<500000)
-       { Tax = UserInput*5/100;
-           return  UserTax =UserInput-Tax;
-       }
-        else if ( UserInput>50000 && UserInput<750000)
-       { Tax = UserInput*10/100;
-           return  UserTax =UserInput-Tax;
-       }
-       else if ( UserInput>750000 && UserInput<1000000)
-       { Tax = UserInput*15/100;
-           return  UserTax =UserInput-Tax;
-       }
-       else if ( UserInput>1000000 && UserInput<1250000)
-       { Tax = UserInput*20/100;
-           return  UserTax =UserInput-Tax;
-       }
-       else if ( UserInput>1250000 && UserInput<1500000)
-       { Tax = UserInput*25/100;
-           return  UserTax =UserInput-Tax;
-       }
-       else 
-       { Tax = UserInput*30/100;
-           return  UserTax =UserInput-Tax;
-       }
- }
-}
+   public static int TaxSlab(int UserIncome)
+        {
+            int Tax = 0, UserTax = 0, UserInput = UserIncome;
+           
+            
+            if (UserInput > 1500000)
+            {
+                UserTax = UserInput - 1500000;
+                Tax = UserTax * 30 / 100;
+                UserInput = 1500000;
+              
+            }
 
+
+            if (UserInput >= 1250000 && UserInput <= 1500000)
+            {
+                UserTax = UserInput - 1250000;
+                Tax = Tax + UserTax * 25 / 100;
+                UserInput = 1250000;
+            }
+            if (UserInput >= 1000000 && UserInput <=1250000)
+            {
+                UserTax = UserInput - 1000000;
+                Tax = Tax + UserTax * 20 / 100;
+                UserInput =  1000000;
+            }
+            if (UserInput >= 750000 && UserInput <= 1000000)
+            {
+                UserTax = UserInput - 750000;
+                Tax = Tax + UserTax * 15 / 100;
+                UserInput =  750000;
+            }
+             if (UserInput >= 500000 && UserInput <= 750000)
+            {
+                UserTax = UserInput - 500000;
+                Tax = Tax + UserTax * 10 / 100;
+                UserInput = 500000;
+            }
+             if (UserInput >=250000 && UserInput <= 500000)
+            {
+                UserTax = UserInput - 250000;
+                Tax = Tax + UserTax * 5 / 100;
+                UserInput =  250000;
+            }
+
+            return UserIncome = UserIncome - Tax;
+                         
+         
+      
+
+        }
+}
