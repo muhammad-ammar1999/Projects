@@ -1,4 +1,4 @@
-function frequency(str){
+ function frequency(str){
     var freqs = {};
     for (var i = 0; i<=str.length;i++){
         if (str[i] in freqs){
@@ -9,7 +9,7 @@ function frequency(str){
         }
   
      }
- 
+ sortfreq(freqs);
  }
  console.log(" frequency");    
  
@@ -55,7 +55,7 @@ function frequency(str){
         return (Array(trimtree(p[0]),trimtree(p[1])));
  }
  }
- node = (trimtree(tree));
+ node = (trimtree("abc"));
  console.log(node);
  console.log("tree trimed");
  
@@ -113,11 +113,11 @@ function frequency(str){
  var read_string = fs.readFileSync("string.txt");
  console.log(read_string);
  
- //fs.writeFileSync("endoced.txt",encode(read_string))
- fs.writeFileSync("endoced.txt",frequency(read_string))
+ //fs.writeFileSync("encoded.txt",encode(read_string))
+ //fs.writeFileSync("encoded.txt",frequency(read_string))
  
  
  read_string = fs.readFileSync("encoded.txt");
  
- console.log(decode(tree,read_string));
- fs.writeFileSync("string.txt",decode(tree,read_string));    
+ console.log(decode("m.jzdjf;s",read_string));
+ fs.writeFileSync("string.txt",decode("djakjds;lfja",read_string));    
