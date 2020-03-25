@@ -3,24 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplicationtask;
+
 
 import java.util.Scanner;
 
-/**
- *
- * @author Ammar
- */
-public class JavaApplicationTask {
+class Tax{
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args)
     {
       
      Scanner sc = new Scanner(System.in);
-     System.out.println("UserInput");
+     System.out.println("UserInut");
              int UserIncome =sc.nextInt();
      int TaxReturn = TaxSlab(  UserIncome);
 System.out.println(TaxReturn);
