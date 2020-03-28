@@ -9,7 +9,7 @@
         }
   
      }
- sortfreq(freqs);
+
  }
  console.log(" frequency");    
  
@@ -55,7 +55,7 @@
         return (Array(trimtree(p[0]),trimtree(p[1])));
  }
  }
- node = (trimtree("abc"));
+ node = (trimtree(letters));
  console.log(node);
  console.log("tree trimed");
  
@@ -80,7 +80,12 @@
  
  function encode(str){
     var output = "";
-  //  frequency(read_string);
+    frequency(read_string);
+   letters = sortfreq(freqs);
+   letters = buildtree(letters);
+   tree = trimtree(letters);
+   node  = (trimtree(tree));
+   codes = assigncodes(node,"1")
     for (var i=0;i<str.length;i++){
         output = output+codes[str[i]];
     }
@@ -113,11 +118,11 @@
  var read_string = fs.readFileSync("string.txt");
  console.log(read_string);
  
- //fs.writeFileSync("encoded.txt",encode(read_string))
+ fs.writeFileSync("encoded.txt",encode(read_string))
  //fs.writeFileSync("encoded.txt",frequency(read_string))
  
  
  read_string = fs.readFileSync("encoded.txt");
  
- console.log(decode("m.jzdjf;s",read_string));
- fs.writeFileSync("string.txt",decode("djakjds;lfja",read_string));    
+ console.log(decode(tree,read_string));
+ fs.writeFileSync("string.txt",decode(tree,read_string));   
