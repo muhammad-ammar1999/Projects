@@ -1,0 +1,121 @@
+using System;
+
+namespace ConsoleApplicationTask
+{
+    class Employee
+    {
+        static Employee e1 = null;
+        static Employee e2 = null;
+        static Employee e3 = null;
+        static Employee e4 = null;
+        static float Salary = 1000F;
+        static int obejctcounter;
+        static int ConstructorCunter ;
+        private Employee()
+        {
+
+
+            ConstructorCunter++;
+        }
+        public static Employee GetObject()
+        {
+            switch (obejctcounter)
+            {
+                case 0:
+                    if (e1 == null)
+                    {
+                        e1 = new Employee();
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter++;
+                        return e1;
+                        break;
+                    }
+                    else
+                    {
+
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter++;
+                        return e1;
+                        break;
+                    }
+                case 1:
+                    if (e2 == null)
+                    {
+                        e2 = new Employee();
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter++;
+                        return e2;
+                        break;
+                    }
+                    else
+                    {
+
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter++;
+                        return e2;
+                        break;
+                    }
+
+                case 2:
+                    if (e3 == null)
+                    {
+                        e3 = new Employee();
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter++;
+                        return e3;
+                        break;
+                    }
+                    else
+                    {
+
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter++;
+                        return e3;
+                        break;
+                    }
+                default :
+                    if (e4 == null)
+                    {
+                        e4 = new Employee();
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter = 0;
+                        return e4;
+                        break;
+                    }
+
+                    else
+                    {
+                        Console.WriteLine(Employee.Salary + " " + obejctcounter + " " + ConstructorCunter);
+                        obejctcounter = 0;
+                        return e4;
+                        break;
+                    }
+
+
+
+
+            }
+
+        }
+        class Program
+        {
+            public static void Main()
+            {
+
+                Employee.GetObject();
+                Employee.GetObject();
+                Employee.GetObject();
+                Employee.GetObject();
+                Employee.GetObject();
+
+                Employee.GetObject();
+                Employee.GetObject();
+                Employee.GetObject();
+                Employee.GetObject();
+                Employee.GetObject();
+
+            }
+
+        }
+    }
+}
