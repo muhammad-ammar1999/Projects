@@ -1,50 +1,50 @@
-var readstring ="gksdkgspdkgkdgkdfsk sdkdfkgdgkdg 1234214 &&&&&!@";
-code=[] ,pat=''
-
+var readstring ="compressor is ready";
+code=[] ,pat='';
+console.log(readstring)
 function Frequency(str)
 {
-var Freq={};
+var Frequencies={};
 for (var i in str)
 {
 
-    if(Freq[str[i]]==undefined)
+    if(Frequencies[str[i]]==undefined)
 {
-Freq[str[i]]=1;
+Frequencies[str[i]]=1;
 }
 else 
 {
-Freq[str[i]]=Freq[str[i]]+1;
+Frequencies[str[i]]=Frequencies[str[i]]+1;
 }
 }
 
-return Freq;
+return Frequencies;
 }
 
-function sortfreq(Freq)
+function sortfreq(Frequencies)
 {
-    var tuples=[];
-    for( var let in Freq)
+    var Nodes=[];
+    for( var let in Frequencies)
     {
-    tuples.push([Freq[let],let]);
+    Nodes.push([Frequencies[let],let]);
     }
-    return tuples.sort();
+    return Nodes.sort();
     }
     
     a=Frequency(readstring);
 
-    function buildtree(tuples)
+    function buildtree(Nodes)
     {
-        while(tuples.length>1)
+        while(Nodes.length>1)
         {
-        var leasttwo=[tuples[0][1],tuples[1][1]];
-        var rest=tuples.slice(2,tuples.length);
-        var combfreq=tuples[0][0]+tuples[1][0];
-        tuples=rest;
+        var leasttwo=[Nodes[0][1],Nodes[1][1]];
+        var rest=Nodes.slice(2,Nodes.length);
+        var combfreq=Nodes[0][0]+Nodes[1][0];
+        Nodes=rest;
         end=[combfreq,leasttwo];
-        tuples.push(end)
-        tuples.sort();
+        Nodes.push(end)
+        Nodes.sort();
         }
-        return tuples[0][1];
+        return Nodes[0][1];
         }   
       tree=buildtree(sortfreq(a));   
       
@@ -81,8 +81,7 @@ function sortfreq(Freq)
       for(bit in encoded)  
       {  
           if(encoded[bit]=='0')  
-
-            p=p[0];  
+          p=p[0];  
           else  
               p=p[1];  
 
