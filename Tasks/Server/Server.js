@@ -14,7 +14,7 @@ connection.connect(function(error){
         console.log("connected to DataBase ShopMS");
     }
 });
-connection.query('SELECT * FROM outlet', (err,rows) => {
+connection.query('SELECT * FROM Inventory', (err,rows) => {
     if(err) throw err;
   
     console.log('Data received from inventory:');
