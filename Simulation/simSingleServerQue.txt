@@ -1,0 +1,278 @@
+
+package javaapplication39;
+import java.util.*;
+import java.text.*;
+
+public class JavaApplication39 {
+
+   
+    public static void main (String[] argv)
+    {
+        Queue queue = new Queue ();
+        queue.simulate (10);
+        System.out.println (queue);
+    } 
+
+    
+}
+ class Queue {
+    
+   
+    double arrivalRate = 0.75;
+    double serviceRate = 1.0;
+
+    
+    LinkedList<Customer> queue;
+
+   
+    PriorityQueue<Event> eventList;
+
+   
+    double clock;
+
+    // Statistics.
+    int numArrivals = 0;                   
+    int numDepartures;                    
+    double totalWaitTime, avgWaitTime;      
+    double totalSystemTime, avgSystemTime;  
+
+
+    void init ()
+    {
+        queue = new LinkedList<Customer> ();
+        eventList = new PriorityQueue<Event> ();
+        clock = 0.0;
+        numArrivals = numDepartures = 0;
+        totalWaitTime = totalSystemTime = 0.0;
+        scheduleArrival ();
+    }
+
+
+    void simulate (int maxCustomers)
+    {
+        init ();
+
+        while (numArrivals < maxCustomers) {
+            Event e = eventList.poll ();
+            clock = e.eventTime;
+            if (e.type == Event.ARRIVAL) {
+                handleArrival (e);
+            }
+            else {
+                handleDeparture (e);
+            }
+        }
+
+        stats ();
+    }
+
+
+    void handleArrival (Event e)
+    {
+	numArrivals ++;
+	queue.add (new Customer (clock));
+	if (queue.size() == 1) {
+	    scheduleDeparture ();
+	}
+	scheduleArrival ();
+    }
+
+
+    void handleDeparture (Event e)
+    {
+	numDepartures ++;
+	Customer c = queue.removeFirst ();
+
+        double timeInSystem = clock - c.arrivalTime;
+
+	totalSystemTime += timeInSystem;
+
+	if (queue.size() > 0) {
+	    Customer waitingCust = queue.get (0);
+            double waitTime = clock - waitingCust.arrivalTime; 
+	    totalWaitTime += waitTime;
+	    scheduleDeparture ();
+	}
+    }
+
+
+    void scheduleArrival ()
+    {
+	double nextArrivalTime = clock + randomInterarrivalTime();
+	eventList.add (new Event (nextArrivalTime, Event.ARRIVAL));
+    }
+    
+
+    void scheduleDeparture ()
+    {
+	double nextDepartureTime = clock + randomServiceTime ();
+	eventList.add (new Event (nextDepartureTime, Event.DEPARTURE));
+    }
+
+
+    double randomInterarrivalTime ()
+    {
+	return exponential (arrivalRate);
+    }
+
+
+    double randomServiceTime ()
+    {
+	return exponential (serviceRate);
+    }
+
+
+    double exponential (double gamma)
+    {
+        return (1.0 / gamma) * (-Math.log(1.0 - RandTool.uniform()));
+    }
+
+    void stats ()
+    {
+	if (numDepartures == 0) {
+	    return;
+	}
+	avgWaitTime = totalWaitTime / numDepartures;
+	avgSystemTime = totalSystemTime / numDepartures;
+    }
+
+
+    public String toString ()
+    {
+        String results = "Simulation results:";
+        results += "\n  numArrivals:     " + numArrivals;
+        //results += "\n  numDepartures:   " + numDepartures;
+        results += "\n  avg Wait:        " + avgWaitTime;
+        results += "\n  avg System Time: " + avgSystemTime;
+        return results;
+    }
+    
+    
+
+   
+   
+}
+
+
+
+class Customer {
+    double arrivalTime;
+    public Customer (double arrivalTime)
+    {
+        this.arrivalTime = arrivalTime;
+    }
+}
+
+class Event implements Comparable {
+    public static int ARRIVAL = 1;
+    public static int DEPARTURE = 2;
+    int type = -1;                    
+    double eventTime;                 
+
+    public Event (double eventTime, int type)
+    {
+	this.eventTime = eventTime;
+	this.type = type;
+    }
+
+
+    public int compareTo (Object obj)
+    {
+        Event e = (Event) obj;
+        if (eventTime < e.eventTime) {
+            return -1;
+        }
+        else if (eventTime > e.eventTime) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public boolean equals (Object obj)
+    {
+        return (compareTo(obj) == 0);
+    }
+
+}
+class RandTool {
+
+
+    static final long m = 2147483647L;
+    static final long a = 48271L;
+    static final long q = 44488L;
+    static final long r = 3399L;
+    
+    static long r_seed = 12345678L; 
+    static Random rand = new Random (r_seed);
+    
+    public static void setSeed (long seed)
+    {
+	r_seed = seed;
+        rand = new Random (r_seed);
+    }
+    
+ 
+    public static double uniform ()
+    {
+	long hi = r_seed / q;
+	long lo = r_seed - q * hi;
+	long t = a * lo - r * hi;
+	if (t > 0)
+	    r_seed = t;
+	else
+	    r_seed = t + m;
+	return ( (double) r_seed / (double) m );
+    }
+    
+    // U[a,b] generator 
+    public static double uniform (double a, double b)
+    {
+	if (b > a)
+	    return ( a + (b-a) * uniform() );
+	else { 
+	    System.out.println ("ERROR in uniform(double,double):a="+a+",b="+b); 
+	    return 0;
+	}
+    }
+    
+  
+    public static long uniform (long a, long b)
+    {
+	if (b > a) {
+	    double x = uniform ();
+	    long c = ( a + (long) Math.floor((b-a+1)*x) );
+	    return c;
+	}
+	else if (a == b) 
+	    return a;
+	else { 
+	    System.out.println ("ERROR: in uniform(long,long):a="+a+",b="+b); 
+	    return 0;
+	}
+    }
+    
+    public static int uniform (int a, int b)
+    {
+	return (int) uniform ((long) a, (long) b);
+    }
+    
+    public static double exponential (double lambda)
+    {
+        return (1.0 / lambda) * (-Math.log(1.0 - uniform()));
+    }
+
+    public static double gaussian ()
+    {
+        return rand.nextGaussian ();
+    }
+
+
+    public static double gaussian (double mean, double stdDeviation)
+    {
+        double x = gaussian ();
+        return mean + x * stdDeviation;
+    }
+
+}
